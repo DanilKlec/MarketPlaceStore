@@ -1,0 +1,319 @@
+﻿@using Microsoft.AspNetCore.Mvc.TagHelpers
+@model NewsStore.API.ViewModels.CabinetModel
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="author" content="templatemo">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
+
+    <title>Добавить новость</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="~/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+
+    <!-- Additional CSS Files -->
+    <link href="~/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="~/css/simple-sidebar.css" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/0e5f3a1f13.js" crossorigin="anonymous"></script>
+    <script src="~/vendor/jquery/jquery.min.js"></script>
+    <script src="~/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="~/assets/css/fontawesome.css">
+    <link rel="stylesheet" href="~/assets/css/templatemo-liberty-market.css">
+    <link rel="stylesheet" href="~/assets/css/owl.css">
+    <link rel="stylesheet" href="~/assets/css/animate.css">
+    <link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css" />
+</head>
+<body>
+    <!-- ***** Preloader Start ***** -->
+    <div id="js-preloader" class="js-preloader">
+        <div class="preloader-inner">
+            <span class="dot"></span>
+            <div class="dots">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </div>
+    @if (Model != null && Model.IsAdmin)
+    {
+        <header class="header-area header-sticky">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <nav class="main-nav">
+                            <a href="/Home/MainBase" class="logo"><img src="~/assets/images/logo.png" alt=""></a>
+                            <ul class="nav">
+                                <li><a href="/Home/MainBase">Главная</a></li>
+                                <li><a href="/News/News">Новости</a></li>
+                                <li><a href="/Home/History">История</a></li>
+                                <li><a href="/News/CreateNews">Добавить новость</a></li>
+                                <li><a href="/Users/Cabinet" class="active">Личный кабинет</a></li>
+                                <li><a href="/Home/Logout">Выйти</a></li>
+                            </ul>
+                            <a class='menu-trigger'>
+                                <span>Menu</span>
+                            </a>
+                            <!-- ***** Menu End ***** -->
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </header>
+    }
+    else @if (Model.UserAutorize != null)
+    {
+        <header class="header-area header-sticky">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <nav class="main-nav">
+                            <a href="/Home/MainBase" class="logo"><img src="~/assets/images/logo.png" alt=""></a>
+                            <ul class="nav">
+                                <li><a href="/Home/MainBase">Главная</a></li>
+                                <li><a href="/News/News">Новости</a></li>
+                                <li><a href="/Home/History">История</a></li>
+                                <li><a href="/Users/Cabinet" class="active">Личный кабинет</a></li>
+                                <li><a href="/Home/Logout">Выйти</a></li>
+                            </ul>
+                            <a class='menu-trigger'>
+                                <span>Menu</span>
+                            </a>
+                            <!-- ***** Menu End ***** -->
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </header>
+    }
+    else
+    {
+        <header class="header-area header-sticky">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <nav class="main-nav">
+                            <a href="/Home/MainBase" class="logo"><img src="~/assets/images/logo.png" alt=""></a>
+                            <ul class="nav">
+                                <li><a href="/Home/MainBase" class="active">Главная</a></li>
+                                <li><a href="/News/News">Новости</a></li>
+                                <li><a href="/Home/History">История</a></li>
+                                <li><a href="/Home/Logout">Выйти</a></li>
+                            </ul>
+                            <a class='menu-trigger'>
+                                <span>Menu</span>
+                            </a>
+                            <!-- ***** Menu End ***** -->
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </header>
+    }
+
+    <div class="page-heading normal-space">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h6>Личный кабинет</h6>
+                    <span>Главная > <a href="#">Личный кабинет</a></span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="author-page">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="author">
+                        <img src="~/assets/images/single-author.jpg" alt="" style="border-radius: 50%; max-width: 170px;">
+                        <h2 style="color: white; text-transform:uppercase;">@Model.UserAutorize.Name</h2>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="right-info">
+                        <div class="row">
+                            <div class="col-4">
+                                <div class="info-item">
+                                    <h6>@Model.UserAutorize.RoleName <em>Роль</em></h6>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="section-heading">
+                        <div class="line-dec"></div>
+                        <h2>Редактирование <em>Профиля</em></h2>
+                    </div>
+                </div>
+                <div class="col-lg-12">
+                    <form id="contact" asp-action="Update" asp-route-id="@Model.UserAutorize.Id" method="post">
+                        <fieldset>
+                            <div class="row">
+                                <div class="col-xl-4">
+                                    <label class="form-label" for="name">Имя</label>
+                                    <input type="text" class="form-control" name="name" id="name" placeholder="Имя">
+                                </div>
+                                <div class="col-xl-4">
+                                    <label class="form-label" for="password">Пароль</label>
+                                    <input type="text" class="form-control" name="password" id="password" placeholder="Пароль">
+                                </div>
+                            </div>
+                            <div class="row" style="justify-content: center;">
+                                <div class="col-lg-4">
+                                    <button type="submit" class="orange-button">Обновить</button>
+                                </div>
+                            </div>
+                        </fieldset>
+                    </form>
+                </div>
+            </div>
+            @if (Model != null && Model.IsAdmin)
+            {
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="section-heading">
+                            <div class="line-dec"></div>
+                            <h2>Мои <em>Новости</em>.</h2>
+                        </div>
+                    </div>
+                    @if (Model != null && Model.News != null && Model.News.Any())
+                    {
+                        @foreach (var news in Model.News)
+                        {
+                            <div class="col-lg-3 col-md-6">
+                                <div class="item">
+                                    <div class="row">
+                                        <div class="col-lg-12">
+                                            <img src="~/Uploads/@news.Picture" alt="" style="border-radius: 20px;">
+                                        </div>
+                                        <div class="col-lg-12">
+                                            <div class="line-dec"></div>
+                                            <div class="row">
+                                                <div class="col-6">
+                                                    <span>Номер: <br> <strong>@news.Number</strong></span>
+                                                </div>
+                                                <div class="col-6">
+                                                    <span>Название: <br> <strong>@news.Name</strong></span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-12">
+                                            <div class="main-button">
+                                                <button data-href="@Url.Action("DetailNews", "News", new { Id = news.Id })" type="button" class="data-btn btn btn-primary" style="text-align: center" data-toggle="modal" data-target="#exampleModalLong"><i class="fas fa-edit mr-1"></i>Детально</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    }
+                </div>
+                <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                        </div>
+                    </div>
+                </div>
+                <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" id="actionModal">
+                    <div class="modal-dialog modal-lg" role="document">
+                        <div class="modal-content">
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="section-heading">
+                            <div class="line-dec"></div>
+                            <h2>Пользователи</h2>
+                        </div>
+                    </div>
+                    @if (Model != null && Model.Users != null && Model.Users.Any())
+                        @foreach (var user in Model.Users)
+                        {
+                            <div class="col-lg-4 col-md-6">
+                                <div class="item">
+                                    <div class="row">
+                                        <div class="col-lg-12">
+                                            <h4>@user.Name</h4>
+                                        </div>
+                                        <div class="col-lg-12">
+                                            <div class="line-dec"></div>
+                                            <div class="row">
+                                                <div class="col-6">
+                                                    <span>Роль: <br> <strong>@user.RoleName</strong></span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-12">
+                                            <div class="main-button">
+                                                <button data-href="@Url.Action("Update", "Users", new { Id = user.Id })" type="button" class="data-btn btn btn-primary" style="text-align: center" data-toggle="modal" data-target="#actionModal"><i class="fas fa-edit mr-1"></i>Редактировать</button>
+                                                <button data-href="@Url.Action("Delete", "Users", new { Id = user.Id })" type="button" class="data-btn btn btn-danger" style="text-align: center" data-toggle="modal" data-target="#actionModal"><i class="fas fa-trash-alt mr-1"></i>Удалить</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                </div>
+            }
+        </div>
+    </div>
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <p>
+                        © 2024 <a href="#"></a> Физико-технический институт - ПГУ им. Т.Г. Шевченко |  3300, г. Тирасполь, ПГУ, ул. Восстания, 2а |  (+373)533-74342 |  itidir@spsu.ru
+                        Разработано <a title="HTML CSS Templates" rel="sponsored" href="http://fti.spsu.ru/" target="_blank">ФТИ</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <!-- Bootstrap core JavaScript -->
+    <script src="~/vendor/jquery/jquery.min.js"></script>
+    <script src="~/vendor/bootstrap/js/bootstrap.min.js"></script>
+
+    <script src="~/assets/js/isotope.min.js"></script>
+    <script src="~/assets/js/owl-carousel.js"></script>
+
+    <script src="~/assets/js/tabs.js"></script>
+    <script src="~/assets/js/popup.js"></script>
+    <script src="~/assets/js/custom.js"></script>
+
+    <script>
+        $(".data-btn").on('click', function (event) {
+            event.preventDefault();
+            $.ajax({
+                url: $(this).attr("data-href")
+            }).done(function (response) {
+                $("#actionModal .modal-content").html(response).modal();
+            });
+        });
+
+        $(".data-btn").on('click', function (event) {
+            event.preventDefault();
+            $.ajax({
+                url: $(this).attr("data-href")
+            }).done(function (response) {
+                $("#exampleModalLong .modal-content").html(response).modal();
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,116 @@
+﻿@using Microsoft.AspNetCore.Mvc.TagHelpers
+@using Microsoft.AspNetCore.Mvc
+@model NewsStore.API.ViewModels.TidingsActionModel
+<head>
+    <link rel="stylesheet" href="css/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+@if (Model != null)
+{
+    <div class="item-details-page">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="section-heading">
+                        <div class="line-dec"></div>
+                        <h2>Редактирование <em>Новости</em></h2>
+                    </div>
+                </div>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <form id="contact" asp-action="UpdateNews" asp-route-id="@Model.Id" enctype="multipart/form-data">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label asp-for="Number" class="control-label">Номер</label>
+                            <input asp-for="Number" class="form-control" />
+                            <span asp-validation-for="Number" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label asp-for="Name" class="control-label">Наименование</label>
+                            <input asp-for="Name" class="form-control" />
+                            <span asp-validation-for="Name" class="text-danger"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label asp-for="Description" class="control-label">Текс</label>
+                            <input asp-for="Description" class="form-control" />
+                            <span asp-validation-for="Description" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label asp-for="Rating" class="control-label">Рейтинг</label>
+                            <input asp-for="Rating" class="form-control" />
+                            <span asp-validation-for="Rating" class="text-danger"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label asp-for="Picture" class="control-label">Фото</label>
+                            <div class="custom-file">
+                                <input asp-for="Picture" class="custom-file-input" />
+                                <label class="custom-file-label" for="customFile">@Model.ExistingImage.ToString()</label>
+                            </div>
+                            <span asp-validation-for="Picture" class="text-danger"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <img src="~/Uploads/@Model.ExistingImage" class="img-thumbnail" height="300" width="500" asp-append-version="true" data-toggle="modal" data-target="#imageModal" />
+                        </div>
+                    </div>
+                </div>
+                <div class="row" style="justify-content: center;">
+                    <div class="col-lg-4">
+                        <button type="submit">Обновить</button>
+                        <button type="button" data-dismiss="modal">Закрыть</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+}
+
+<!-- Модальное окно для полноразмерного изображения -->
+<div class="modal fade" id="imageModal" tabindex="-1" role="dialog" aria-labelledby="imageModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-xl">
+        <div class="modal-content">
+            <div class="modal-body">
+                <img class="img-fluid" src="~/Uploads/@Model.ExistingImage" alt="">
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Закрыть</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Подключение Bootstrap JS (необходим для модального окна) -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+@section Scripts {
+    <script>
+        $(document).on('click', '[data-toggle="lightbox"]', function (event) {
+            event.preventDefault();
+            $(this).ekkoLightbox();
+        });
+        // For showing the name of the file appear on select
+        $(".custom-file-input").on("change", function () {
+            var fileName = $(this).val().split("\\").pop();
+            $(this).siblings(".custom-file-label").addClass("selected").html(fileName);
+        });
+    </script>
+}

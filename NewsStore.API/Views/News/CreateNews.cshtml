@@ -1,0 +1,263 @@
+﻿@using Microsoft.AspNetCore.Mvc.TagHelpers
+@model NewsStore.API.ViewModels.TidingsListingModel
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="author" content="templatemo">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
+
+    <title>Добавить новость</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="~/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+
+    <!-- Additional CSS Files -->
+    <link href="~/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="~/css/simple-sidebar.css" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/0e5f3a1f13.js" crossorigin="anonymous"></script>
+    <script src="~/vendor/jquery/jquery.min.js"></script>
+    <script src="~/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="~/assets/css/fontawesome.css">
+    <link rel="stylesheet" href="~/assets/css/templatemo-liberty-market.css">
+    <link rel="stylesheet" href="~/assets/css/owl.css">
+    <link rel="stylesheet" href="~/assets/css/animate.css">
+    <link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+</head>
+<body>
+    <!-- ***** Preloader Start ***** -->
+    <div id="js-preloader" class="js-preloader">
+        <div class="preloader-inner">
+            <span class="dot"></span>
+            <div class="dots">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </div>
+    @if (Model != null && Model.IsAdmin)
+    {
+        <header class="header-area header-sticky">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <nav class="main-nav">
+                            <a href="/Home/MainBase" class="logo"><img src="~/assets/images/logo.png" alt=""></a>
+                            <ul class="nav">
+                                <li><a href="/Home/MainBase">Главная</a></li>
+                                <li><a href="/News/News">Новости</a></li>
+                                <li><a href="/Home/History">История</a></li>
+                                <li><a href="/News/CreateNews" class="active">Добавить новость</a></li>
+                                <li><a href="/Users/Cabinet">Личный кабинет</a>
+                                <li><a href="/Home/Logout">Выйти</a></li>
+                            </ul>
+                            <a class='menu-trigger'>
+                                <span>Menu</span>
+                            </a>
+                            <!-- ***** Menu End ***** -->
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </header>
+    }
+    else @if (Model.User != null)
+    {
+        <header class="header-area header-sticky">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <nav class="main-nav">
+                            <a href="/Home/MainBase" class="logo"><img src="~/assets/images/logo.png" alt=""></a>
+                            <ul class="nav">
+                                <li><a href="/Home/MainBase">Главная</a></li>
+                                <li><a href="/News/News">Новости</a></li>
+                                <li><a href="/Home/History">История</a></li>
+                                <li><a href="/Users/Cabinet">Личный кабинет</a></li>
+                                <li><a href="/Home/Logout">Выйти</a></li>
+                            </ul>
+                            <a class='menu-trigger'>
+                                <span>Menu</span>
+                            </a>
+                            <!-- ***** Menu End ***** -->
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </header>
+    }
+    else
+    {
+        <header class="header-area header-sticky">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <nav class="main-nav">
+                            <a href="/Home/MainBase" class="logo"><img src="~/assets/images/logo.png" alt=""></a>
+                            <ul class="nav">
+                                <li><a href="/Home/MainBase" s>Главная</a></li>
+                                <li><a href="/News/News">Новости</a></li>
+                                <li><a href="/Home/History">История</a></li>
+                                <li><a href="/Home/Logout">Выйти</a></li>
+                            </ul>
+                            <a class='menu-trigger'>
+                                <span>Menu</span>
+                            </a>
+                            <!-- ***** Menu End ***** -->
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </header>
+    }
+    <div class="discover-items">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="section-heading">
+                        <div class="line-dec"></div>
+                        <h2>Добавить <em>Новость</em></h2>
+                    </div>
+                </div>
+                <div class="col-lg-12">
+                    <form id="contact" asp-action="CreateNews" method="post" enctype="multipart/form-data">
+                        <fieldset>
+                            <div class="row">
+                                <div class="col-xl-4">
+                                    <label class="form-label" for="name">Название</label>
+                                    <input type="text" class="form-control" name="name" id="name" placeholder="Введите название">
+                                </div>
+                                <div class="col-xl-4">
+                                    <label class="form-label" for="rating">Рейтинг</label>
+                                    <input type="number" class="form-control" name="rating" id="rating" placeholder="Рейтинг">
+                                </div>
+                                <div class="col-xl-4">
+                                    <label class="form-label" for="number">Номер</label>
+                                    <input type="number" class="form-control" name="number" id="number" placeholder="Номер">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-xl-4">
+                                    <div class="form-group">
+                                        <label class="form-label" for="picture">Фото</label>
+                                        <div class="custom-file">
+                                            <input type="file" class="custom-file-input" name="picture" id="picture">
+                                            <label class="custom-file-label" for="customFile">Добавить фото</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <label class="form-label" for="description">Описание</label>
+                                    <textarea type="text" class="form-control" rows="4" name="description" id="description" placeholder="Описание"></textarea>
+                                </div>
+                            </div>
+                            <div class="row" style="justify-content: center;">
+                                <div class="col-lg-4">
+                                    <button type="submit" class="orange-button">Добавить новость</button>
+                                </div>
+                            </div>
+                        </fieldset>
+                    </form>
+                </div>
+                @if (Model != null && Model.News != null && Model.News.Any())
+                {
+                    <table id="tab1" class="table">
+                        <thead class="text-white">
+                            <tr>
+                                <th scope="col">Номер</th>
+                                <th scope="col">Название</th>
+                                <th scope="col">Текст</th>
+                            </tr>
+                        </thead>
+                        <tbody class="text-white">
+
+                            @foreach (var news in Model.News)
+                            {
+                                <tr>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => news.Number)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => news.Name)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => news.Description)
+                                    </td>
+                                    <td>
+                                        <div>
+                                            <button data-href="@Url.Action("UpdateNews", "News", new { Id = news.Id })" type="button" class="data-btn btn btn-primary" style="text-align: center" data-toggle="modal" data-target="#actionModal"><i class="fas fa-edit mr-1"></i>Редактировать</button>
+                                            <button data-href="@Url.Action("DeleteNews", "News", new { Id = news.Id })" type="button" class="data-btn btn btn-danger" style="text-align: center" data-toggle="modal" data-target="#actionModal"><i class="fas fa-trash-alt mr-1"></i>Удалить</button>
+                                        </div>
+                                    </td>
+                                </tr>
+                            }
+
+                        </tbody>
+                    </table>
+                }
+                <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" id="actionModal">
+                    <div class="modal-dialog modal-lg" role="document">
+                        <div class="modal-content">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <p>
+                        © 2024 <a href="#"></a> Физико-технический институт - ПГУ им. Т.Г. Шевченко |  3300, г. Тирасполь, ПГУ, ул. Восстания, 2а |  (+373)533-74342 |  itidir@spsu.ru
+                        Разработано <a title="HTML CSS Templates" rel="sponsored" href="http://fti.spsu.ru/" target="_blank">ФТИ</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <!-- Bootstrap core JavaScript -->
+    <script src="~/vendor/jquery/jquery.min.js"></script>
+    <script src="~/vendor/bootstrap/js/bootstrap.min.js"></script>
+
+    <script src="~/assets/js/isotope.min.js"></script>
+    <script src="~/assets/js/owl-carousel.js"></script>
+
+    <script src="~/assets/js/tabs.js"></script>
+    <script src="~/assets/js/popup.js"></script>
+    <script src="~/assets/js/custom.js"></script>
+
+    <script>
+        $(".data-btn").on('click', function (event) {
+            event.preventDefault();
+            $.ajax({
+                url: $(this).attr("data-href")
+            }).done(function (response) {
+                $("#actionModal .modal-content").html(response).modal();
+            });
+        });
+        $(".custom-file-input").on("change", function () {
+            var fileName = $(this).val().split("\\").pop();
+            console.log(fileName);
+            $(this).siblings(".custom-file-label").addClass("selected").html(fileName);
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,79 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="News.DataBase.Configurations.TidingsConfiguration" BaseTypeListCollapsed="true">
+    <Position X="16.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Configurations\TidingsConfiguration.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="NewsStore.DataBase.Entites.TidingsEntites">
+    <Position X="12" Y="4.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AgACgCAAAAAgABAAAEAAAAQAAAAEAAEAAAAAAAAAAAA=</HashCode>
+      <FileName>Entites\TidingsEntites.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="NewsStore.DataBase.Entites.UsersEntites">
+    <Position X="12" Y="7.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAIAAAAAAAAAEAAgAAQAAAAAAAACAQAAAAAAAAA=</HashCode>
+      <FileName>Entites\UsersEntites.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="NewsStore.DataBase.Migrations.AddMigrationUserToTidings">
+    <Position X="13" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAI=</HashCode>
+      <FileName>Migrations\20240614193025_AddMigrationUserToTidings.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="NewsStore.DataBase.Migrations.TidingsStoreDbContextModelSnapshot">
+    <Position X="16.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAA=</HashCode>
+      <FileName>Migrations\TidingsStoreDbContextModelSnapshot.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="NewsStore.DataBase.Reposotories.TidingsRepository" BaseTypeListCollapsed="true">
+    <Position X="10.25" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAABABAAAAAAAAAAAEAAEAAAAAAAAAAAAA=</HashCode>
+      <FileName>Repositories\TidingsRepository.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="NewsStore.DataBase.Reposotories.UsersRepository" BaseTypeListCollapsed="true">
+    <Position X="10.25" Y="7.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAABABAAAAAAAAAAAEAAEAAAAAAAAAAAAA=</HashCode>
+      <FileName>Repositories\UsersRepository.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="NewsStore.DataBase.TidingsStoreDbContext">
+    <Position X="14.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAACAAAAAAAAAAAAAgAAAAEgAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>TidingsStoreDbContext.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Interface Name="NewsStore.Core.Abstractions.ITidingsRepository">
+    <Position X="2.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier />
+  </Interface>
+  <Interface Name="NewsStore.Core.Abstractions.ITidingsService">
+    <Position X="4.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier />
+  </Interface>
+  <Interface Name="NewsStore.Core.Abstractions.IUsersRepository">
+    <Position X="2.75" Y="5.5" Width="1.5" />
+    <TypeIdentifier />
+  </Interface>
+  <Interface Name="NewsStore.Application.Services.IUsersService">
+    <Position X="4.5" Y="5.5" Width="1.5" />
+    <TypeIdentifier />
+  </Interface>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

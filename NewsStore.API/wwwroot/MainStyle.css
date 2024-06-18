@@ -1,0 +1,133 @@
+﻿
+.top-menu {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+    border: 2px solid #202245;
+    border-radius: 20px 20px;
+    width: 100%;
+    background-color: #202245;
+}
+
+    .top-menu li {
+        display: inline;
+        margin: 525px;
+        padding: 0px;
+    }
+
+    .top-menu a {
+        color: #fff;
+        padding: 15px 10px;
+        text-decoration: none;
+        font-weight: bold;
+        display: inline-block;
+        width: 200px;
+        text-align: center;
+    }
+
+        .top-menu a:hover {
+            border-radius: 25px 25px;
+            background-color: #0066FF;
+        }
+
+@media (max-width: 680px) {
+    .top-menu {
+        margin: 0;
+    }
+
+        .top-menu li {
+            display: block;
+            margin-right: 0;
+        }
+
+        .top-menu a {
+            display: block;
+        }
+}
+
+body {
+    background-color: #202245;
+}
+
+.what_is {
+    text-align: center; /*margin: 341px 40px 197px 40px;*/
+}
+
+.t_what_is {
+    max-width: 1318px;
+    margin: 40px auto;
+    font: bold normal 36px/36px Roboto;
+    color: #fff;
+}
+
+.cards_what_is {
+    display: grid;
+    justify-content: center;
+    grid-template-columns: repeat(3, 400px);
+    grid-template-rows: repeat(5, 110px);
+    grid-template-areas: "cell-1-1 cell-1-2 cell-1-3" "cell-1-1 cell-1-2 cell-1-3" "cell-2-1 cell-2-2 cell-1-3" "cell-2-1 cell-2-2 cell-2-3" "cell-2-1 cell-2-2 cell-2-3";
+    grid-gap: 25px;
+    counter-reset: num;
+}
+
+.card_what_is_all {
+    position: relative;
+    border-radius: 7px;
+    background-image: radial-gradient(circle closest-corner at 50% 0%, #0000 10%, #3C4070 11%);
+    filter: drop-shadow(0px 4px 10px #0008);
+}
+
+    .card_what_is_all::before {
+        counter-increment: num;
+        content: counter(num);
+        position: absolute;
+        bottom: 100%;
+        left: 50%;
+        width: 10%;
+        transform: translate(-50%, 50%);
+        font: bold 28px Arial;
+        color: #808795;
+    }
+
+.card_what_is_1 {
+    grid-area: cell-1-1;
+}
+
+.card_what_is_2 {
+    grid-area: cell-1-2;
+}
+
+.card_what_is_3 {
+    grid-area: cell-1-3;
+}
+
+.card_what_is_4 {
+    grid-area: cell-2-1;
+}
+
+.card_what_is_5 {
+    grid-area: cell-2-2;
+}
+
+.card_what_is_6 {
+    grid-area: cell-2-3;
+}
+
+.text_menu {
+    max-width: 1318px;
+    margin: 40px auto;
+    font: bold normal 36px/36px Roboto;
+    color: #fff;
+}
+
+.text-left {
+    text-align: left;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.text-right {
+    text-align: right;
+}

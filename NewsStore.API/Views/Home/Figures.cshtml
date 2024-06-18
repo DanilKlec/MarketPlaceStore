@@ -1,0 +1,299 @@
+﻿@using System.Security.Claims
+@model ClaimsPrincipal
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="author" content="templatemo">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
+
+    <title>Деятели</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="~/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+
+    <!-- Additional CSS Files -->
+    <link rel="stylesheet" href="~/assets/css/fontawesome.css">
+    <link rel="stylesheet" href="~/assets/css/templatemo-liberty-market.css">
+    <link rel="stylesheet" href="~/assets/css/owl.css">
+    <link rel="stylesheet" href="~/assets/css/animate.css">
+    <link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css" />
+</head>
+
+<body>
+    <div id="js-preloader" class="js-preloader">
+        <div class="preloader-inner">
+            <span class="dot"></span>
+            <div class="dots">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </div>
+    @if (Model != null && Model.IsInRole("admin"))
+    {
+        <header class="header-area header-sticky">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <nav class="main-nav">
+                            <a href="/Home/MainBase" class="logo"><img src="~/assets/images/logo.png" alt=""></a>
+                            <ul class="nav">
+                                <li><a href="/Home/MainBase">Главная</a></li>
+                                <li><a href="/News/News">Новости</a></li>
+                                <li><a href="/Home/History">История</a></li>
+                                <li><a href="/News/CreateNews">Добавить новость</a></li>
+                                <li><a href="/Users/Cabinet">Личный кабинет</a>
+                                <li><a href="/Home/Logout">Выйти</a></li>
+                            </ul>
+                            <a class='menu-trigger'>
+                                <span>Menu</span>
+                            </a>
+                            <!-- ***** Menu End ***** -->
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </header>
+    }
+    else @if (Model.Identity.IsAuthenticated)
+    {
+        <header class="header-area header-sticky">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <nav class="main-nav">
+                            <a href="/Home/MainBase" class="logo"><img src="~/assets/images/logo.png" alt=""></a>
+                            <ul class="nav">
+                                <li><a href="/Home/MainBase">Главная</a></li>
+                                <li><a href="/News/News">Новости</a></li>
+                                <li><a href="/Home/History">История</a></li>
+                                <li><a href="/Users/Cabinet">Личный кабинет</a></li>
+                                <li><a href="/Home/Logout">Выйти</a></li>
+                            </ul>
+                            <a class='menu-trigger'>
+                                <span>Menu</span>
+                            </a>
+                            <!-- ***** Menu End ***** -->
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </header>
+    }
+    else
+    {
+        <header class="header-area header-sticky">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <nav class="main-nav">
+                            <a href="/Home/MainBase" class="logo"><img src="~/assets/images/logo.png" alt=""></a>
+                            <ul class="nav">
+                                <li><a href="/Home/MainBase" s>Главная</a></li>
+                                <li><a href="/News/News">Новости</a></li>
+                                <li><a href="/Home/History">История</a></li>
+                                <li><a href="/Home/Logout">Выйти</a></li>
+                            </ul>
+                            <a class='menu-trigger'>
+                                <span>Menu</span>
+                            </a>
+                            <!-- ***** Menu End ***** -->
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </header>
+    }
+    <div class="main-banner">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6 align-self-center">
+                    <div class="header-text">
+                        <h6>ФТИ Инфо</h6>
+                        <h2>Смотри узнавай Обучайся</h2>
+                        <p></p>
+                        @*                         <div class="buttons">
+                        <div class="border-button">
+                        <a href="explore.html">Explore Top NFTs</a>
+                        </div>
+                        <div class="main-button">
+                        <a href="https://youtube.com/templatemo" target="_blank">Watch Our Videos</a>
+                        </div>
+                        </div> *@
+                    </div>
+                </div>
+                <div class="col-lg-5 offset-lg-1">
+                    <div class="owl-banner owl-carousel">
+                        <div class="item">
+                            <img src="~/assets/images/banner-01.png" alt="">
+                        </div>
+                        <div class="item">
+                            <img src="~/assets/images/banner-02.png" alt="">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="categories-collections">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="categories">
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="section-heading">
+                                    <div class="line-dec"></div>
+                                    <h2>Просмотрите наши <em>Разделы</em> Здесь.</h2>
+                                </div>
+                            </div>
+                            <div class="col-lg-3 col-sm-6">
+                                <div class="item">
+                                    <div class="icon">
+                                        <img src="~/assets/images/icon-01.png" alt="">
+                                    </div>
+                                    <h4>Новости</h4>
+                                    <div class="icon-button">
+                                        <a href="/News/News"><i class="fa fa-angle-right"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-3 col-sm-6">
+                                <div class="item">
+                                    <div class="icon">
+                                        <img src="~/assets/images/icon-02.png" alt="">
+                                    </div>
+                                    <h4>История</h4>
+                                    <div class="icon-button">
+                                        <a href="/Home/History"><i class="fa fa-angle-right"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-3 col-sm-6">
+                                <div class="item">
+                                    <div class="icon">
+                                        <img src="~/assets/images/icon-04.png" alt="">
+                                    </div>
+                                    <h4>Деятели</h4>
+                                    <div class="icon-button">
+                                        <a href="/Home/Figures"><i class="fa fa-angle-right"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-3 col-sm-6">
+                                <div class="item">
+                                    <div class="icon">
+                                        <img src="~/assets/images/icon-04.png" alt="">
+                                    </div>
+                                    <h4>Оборудование</h4>
+                                    <div class="icon-button">
+                                        <a href="/Home/Equipment"><i class="fa fa-angle-right"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-12">
+                    <div class="collections">
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="section-heading">
+                                    <div class="line-dec"></div>
+                                    <h2>Научные <em>Деятели</em></h2>
+                                </div>
+                            </div>
+                            <div class="col-lg-12">
+                                <div class="owl-collection owl-carousel">
+                                    <div class="item">
+                                        <img src="~/assets/images/Beril.jpg" alt="">
+                                        <div class="down-content">
+                                            <h4>Берил Степан Иорданович</h4>
+                                            <h4> Ученая степень: Доктор физико-математических наук</h4>
+                                            <h4> Ученое звание: Профессор</h4>
+                                            <div class="line-dec"></div>
+                                            <h4>
+                                                Президент Приднестровского государственного университета имени Т. Г. Шевченко, </br>
+                                                действительный член Российской академии естественных наук, председатель приднестровского отделения РАЕН.</h4>
+                                        </div>
+                                    </div>
+                                    <div class="item">
+                                        <img src="~/assets/images/bashkatov.jpg" alt="">
+                                        <div class="down-content">
+                                            <h4>Башкатов Александр Майорович</h4>
+                                            <h4> Ученая степень: Кандидат технических наук</h4>
+                                            <h4> Ученое звание: Без учёного звания</h4>
+                                            <div class="line-dec"></div>
+                                            <h4>
+                                                Написал книги: Моделирование аварийности на маршрутном транспорте. Монография </br>
+                                                Моделирование в OpenSCAD на примерах. Учебное пособие </br>Моделирование в OpenSCAD: на примерах. Учебное пособие.
+                                            </h4>
+                                        </div>
+                                    </div>
+                                    <div class="item">
+                                        <img src="~/assets/images/kaloshin.jpg" alt="">
+                                        <div class="down-content">
+                                            <h4>Калошин Данила Николаевич</h4>
+                                            <h4> Ученая степень: Кандидат технических наук</h4>
+                                            <h4> Ученое звание: Без учёного звания</h4>
+                                            <div class="line-dec"></div>
+                                            <h4>
+                                                Директор ФТИ. Научные интересы разработка и исследование силового оборудования для управления режимами активноадаптивных энергосистем.</br>
+                                                2016–2020 Аспирант
+                                                Технический УниверситетРеспублики Молдова, Кишинёв
+                                                Специальность " Энергетические системы и технологии " </br>
+                                                2000–2005 Инженер-электрик
+                                                Инженерно Технический институт ПГУимени Т. Г.Шевченко,г.Тирасполь (Молдова)
+                                                Специальность "Электроснабжение промышленных предприятий"
+                                            </h4>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <p>
+                        © 2024 <a href="#"></a> Физико-технический институт - ПГУ им. Т.Г. Шевченко |  3300, г. Тирасполь, ПГУ, ул. Восстания, 2а |  (+373)533-74342 |  itidir@spsu.ru
+                        Разработано <a title="HTML CSS Templates" rel="sponsored" href="http://fti.spsu.ru/" target="_blank">ФТИ</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+
+    <!-- Scripts -->
+    <!-- Bootstrap core JavaScript -->
+    <script src="~/vendor/jquery/jquery.min.js"></script>
+    <script src="~/vendor/bootstrap/js/bootstrap.min.js"></script>
+
+    <script src="~/assets/js/isotope.min.js"></script>
+    <script src="~/assets/js/owl-carousel.js"></script>
+
+    <script src="~/assets/js/tabs.js"></script>
+    <script src="~/assets/js/popup.js"></script>
+    <script src="~/assets/js/custom.js"></script>
+
+</body>
+</html>
