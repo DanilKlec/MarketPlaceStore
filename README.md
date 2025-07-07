@@ -1,6 +1,4 @@
-This project was implemented for my diploma work. 
-A small online store with a basket, order processing and response in telegram. 
-Interfaces for the user, seller and admin were also implemented.
+This project was implemented for my friend for his diploma work. A small site with CRUD functionality and information stored in a database.
 
 Stack:
 ASP Net Core MVC
